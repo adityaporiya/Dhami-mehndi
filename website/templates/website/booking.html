@@ -1,6 +1,6 @@
 {% extends "website/base.html" %}
 
-{% block title %}Book Appointment{% endblock %}
+{% block title %}Book Appointment | Mehndi By Dhruvi{% endblock %}
 
 {% block content %}
 
@@ -8,19 +8,30 @@
 
     <div class="booking-box">
 
-        <h2>Book Your Mehndi Appointment</h2>
+        <div class="booking-heading">
 
-        <p>
-            Fill the details below and we will contact you shortly.
-        </p>
+            <div class="booking-icon">
+                <i class="fas fa-calendar-check"></i>
+            </div>
 
-        <form method="POST">
+            <p class="small-title">Book Your Appointment</p>
+
+            <h1>Book Your Mehndi Appointment</h1>
+
+            <p>
+                Fill in the details below and we will contact you shortly.
+            </p>
+
+        </div>
+
+        <form method="POST" class="booking-form">
 
             {% csrf_token %}
 
             {{ form.as_p }}
 
-            <button type="submit" class="btn">
+            <button type="submit" class="btn booking-submit">
+                <i class="fas fa-calendar-check"></i>
                 Book Now
             </button>
 

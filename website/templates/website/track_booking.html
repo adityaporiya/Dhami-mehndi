@@ -1,80 +1,191 @@
 {% extends "website/base.html" %}
 
-{% block title %}Track Booking | Mehndi By Dhruvi {% endblock %}
+{% block title %}Track Booking | Mehndi By Dhruvi{% endblock %}
 
 {% block content %}
 
-<section class="booking-page">
+<section class="booking-page track-page">
 
-    <div class="booking-box">
+    <div class="booking-box track-box">
 
-        <h1>Track Your Booking</h1>
+        <div class="booking-heading">
 
-        <form method="GET">
+            <div class="booking-icon">
+                <i class="fas fa-search"></i>
+            </div>
 
-            <input
-                type="text"
-                name="booking_id"
-                placeholder="Enter Booking ID (Example: BK0001)"
-                value="{{ booking_id }}"
-                required
-            >
+            <p class="small-title">Booking Status</p>
 
-            <button type="submit" class="btn">
+            <h1>Track Your Booking</h1>
+
+            <p>
+                Enter your Booking ID below to check your appointment status.
+            </p>
+
+        </div>
+
+        <form method="GET" class="track-form">
+
+            <div class="track-input-group">
+
+                <label for="booking-id">
+                    <i class="fas fa-ticket"></i>
+                    Booking ID
+                </label>
+
+                <input
+                    id="booking-id"
+                    type="text"
+                    name="booking_id"
+                    placeholder="Enter Booking ID (Example: BK0001)"
+                    value="{{ booking_id }}"
+                    required
+                >
+
+            </div>
+
+            <button type="submit" class="btn track-submit">
+                <i class="fas fa-search"></i>
                 Track Booking
             </button>
 
         </form>
 
+
         {% if booking %}
 
-            <div class="card">
+            <div class="card booking-details-card">
 
-                <h2>Booking Details</h2>
+                <div class="details-header">
 
-                <p>
-                    <strong>Booking ID:</strong>
-                    {{ booking.booking_id }}
-                </p>
+                    <div>
+                        <p class="small-title">Appointment Found</p>
+                        <h2>Booking Details</h2>
+                    </div>
 
-                <p>
-                    <strong>Name:</strong>
-                    {{ booking.name }}
-                </p>
+                    <span class="booking-id-badge">
+                        {{ booking.booking_id }}
+                    </span>
 
-                <p>
-                    <strong>Phone:</strong>
-                    {{ booking.phone }}
-                </p>
+                </div>
 
-                <p>
-                    <strong>Email:</strong>
-                    {{ booking.email|default:"Not Provided" }}
-                </p>
 
-                <p>
-                    <strong>Service:</strong>
-                    {{ booking.service }}
-                </p>
+                <div class="booking-details-grid">
 
-                <p>
-                    <strong>Date:</strong>
-                    {{ booking.booking_date }}
-                </p>
+                    <div class="detail-item">
+                        <span class="detail-icon">
+                            <i class="fas fa-user"></i>
+                        </span>
 
-                <p>
-                    <strong>Status:</strong>
+                        <div>
+                            <small>Name</small>
+                            <strong>{{ booking.name }}</strong>
+                        </div>
+                    </div>
 
-                    {% if booking.status == "Pending" %}
-                        🟠 Pending
-                    {% elif booking.status == "Confirmed" %}
-                        🔵 Confirmed
-                    {% elif booking.status == "Completed" %}
-                        🟢 Completed
-                    {% elif booking.status == "Cancelled" %}
-                        🔴 Cancelled
-                    {% endif %}
-                </p>
+
+                    <div class="detail-item">
+                        <span class="detail-icon">
+                            <i class="fas fa-phone"></i>
+                        </span>
+
+                        <div>
+                            <small>Phone</small>
+                            <strong>{{ booking.phone }}</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-item">
+                        <span class="detail-icon">
+                            <i class="fas fa-envelope"></i>
+                        </span>
+
+                        <div>
+                            <small>Email</small>
+                            <strong>
+                                {{ booking.email|default:"Not Provided" }}
+                            </strong>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-item">
+                        <span class="detail-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </span>
+
+                        <div>
+                            <small>Service</small>
+                            <strong>{{ booking.service }}</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-item">
+                        <span class="detail-icon">
+                            <i class="fas fa-calendar"></i>
+                        </span>
+
+                        <div>
+                            <small>Booking Date</small>
+                            <strong>{{ booking.booking_date }}</strong>
+                        </div>
+                    </div>
+
+
+                    <div class="detail-item status-detail">
+
+                        <span class="detail-icon">
+                            <i class="fas fa-circle-check"></i>
+                        </span>
+
+                        <div>
+
+                            <small>Status</small>
+
+                            <strong>
+
+                                {% if booking.status == "Pending" %}
+
+                                    <span class="status status-pending">
+                                        🟠 Pending
+                                    </span>
+
+                                {% elif booking.status == "Confirmed" %}
+
+                                    <span class="status status-confirmed">
+                                        🔵 Confirmed
+                                    </span>
+
+                                {% elif booking.status == "Completed" %}
+
+                                    <span class="status status-completed">
+                                        🟢 Completed
+                                    </span>
+
+                                {% elif booking.status == "Cancelled" %}
+
+                                    <span class="status status-cancelled">
+                                        🔴 Cancelled
+                                    </span>
+
+                                {% else %}
+
+                                    <span class="status">
+                                        {{ booking.status }}
+                                    </span>
+
+                                {% endif %}
+
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
 
                 <div class="receipt-actions">
 
@@ -82,6 +193,7 @@
                         href="{% url 'booking_receipt' booking.booking_id %}"
                         class="btn"
                     >
+                        <i class="fas fa-file-invoice"></i>
                         View Receipt
                     </a>
 
@@ -89,6 +201,7 @@
                         href="{% url 'track_booking' %}"
                         class="btn2"
                     >
+                        <i class="fas fa-rotate"></i>
                         Track Another
                     </a>
 
@@ -96,6 +209,7 @@
                         href="{% url 'home' %}"
                         class="btn2"
                     >
+                        <i class="fas fa-home"></i>
                         Back Home
                     </a>
 
@@ -103,11 +217,22 @@
 
             </div>
 
+
         {% elif searched %}
 
-            <div class="error">
-                No booking found with ID
-                <strong>{{ booking_id }}</strong>
+            <div class="error booking-error">
+
+                <i class="fas fa-circle-exclamation"></i>
+
+                <div>
+                    <strong>No booking found</strong>
+
+                    <p>
+                        We couldn't find any booking with ID
+                        <strong>{{ booking_id }}</strong>.
+                    </p>
+                </div>
+
             </div>
 
         {% endif %}

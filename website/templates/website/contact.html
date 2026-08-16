@@ -1,22 +1,120 @@
 {% extends "website/base.html" %}
 
-{% block title %}Contact | Mehndi By Dhruvi {% endblock %}
+{% block title %}Contact | Mehndi By Dhruvi{% endblock %}
 
 {% block content %}
 
-<section class="booking-page">
+<section class="contact-page">
 
-    <div class="booking-box">
+    <div class="contact-container">
 
-        <h1>Contact Us</h1>
+        <!-- Contact Information -->
+        <div class="contact-info">
 
-        <p>Phone: +91 9999999999</p>
-        <p>Email: info@mehndibyDhruvi .com</p>
-        <p>Location: Surat, Gujarat</p>
+            <p class="small-title">Get In Touch</p>
 
-        <a href="{% url 'home' %}" class="btn">
-            Back Home
-        </a>
+            <h1>Contact Us</h1>
+
+            <p class="contact-intro">
+                Have a question or want to book your Mehndi appointment?
+                Get in touch with us and we will be happy to help.
+            </p>
+
+
+            <div class="contact-list">
+
+                <!-- Phone -->
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+
+                    <div>
+                        <span>Phone</span>
+                        <a href="tel:+919999999999">
+                            +91 9999999999
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- Email -->
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+
+                    <div>
+                        <span>Email</span>
+                        <a href="mailto:info@mehndibyDhruvi.com">
+                            info@mehndibyDhruvi.com
+                        </a>
+                    </div>
+
+                </div>
+
+
+                <!-- Location -->
+                <div class="contact-item">
+
+                    <div class="contact-icon">
+                        <i class="fas fa-location-dot"></i>
+                    </div>
+
+                    <div>
+                        <span>Location</span>
+                        <p>Surat, Gujarat</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-actions">
+
+                <a href="{% url 'home' %}" class="btn">
+                    <i class="fas fa-home"></i>
+                    Back Home
+                </a>
+
+                <a href="{% url 'booking' %}" class="btn2">
+                    <i class="fas fa-calendar-check"></i>
+                    Book Appointment
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <!-- Contact Visual / Map -->
+        <div class="contact-visual">
+
+            <div class="contact-card">
+
+                <div class="contact-card-icon">
+                    <i class="fas fa-hands"></i>
+                </div>
+
+                <h2>Let's Create Beautiful Mehndi</h2>
+
+                <p>
+                    Professional Bridal and Arabic Mehndi services
+                    for your special moments.
+                </p>
+
+                <div class="contact-location">
+                    <i class="fas fa-location-dot"></i>
+                    <span>Surat, Gujarat</span>
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 
