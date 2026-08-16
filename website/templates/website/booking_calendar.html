@@ -1,37 +1,31 @@
 {% extends "website/base.html" %}
+{% load static %}
 
 {% block title %}
-Booking Calendar | Mehndi By Dhami
+Booking Calendar | Mehndi By Dhruvi
 {% endblock %}
 
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'website/css/dashboard.css' %}?v=100">
 
 <section class="booking-calendar-page">
 
     <div class="booking-calendar-container">
 
-        <!-- ================= HEADER ================= -->
-
         <div class="calendar-page-header">
-
             <div>
-                <p class="small-title">Booking Management</p>
-
+                <p class="small-title">BOOKING MANAGEMENT</p>
                 <h1>Booking Calendar</h1>
-
-                <p>
-                    View all customer bookings according to their selected date.
-                </p>
+                <p>View all customer bookings according to their selected date.</p>
             </div>
 
             <a href="{% url 'dashboard' %}" class="btn2">
+                <i class="fa-solid fa-arrow-left"></i>
                 Back to Dashboard
             </a>
-
         </div>
 
-
-        <!-- ================= MONTH FILTER ================= -->
 
         <div class="calendar-filter-box">
 
@@ -41,58 +35,20 @@ Booking Calendar | Mehndi By Dhami
                     <label for="month">Month</label>
 
                     <select name="month" id="month">
-
-                        <option value="1" {% if current_month == 1 %}selected{% endif %}>
-                            January
-                        </option>
-
-                        <option value="2" {% if current_month == 2 %}selected{% endif %}>
-                            February
-                        </option>
-
-                        <option value="3" {% if current_month == 3 %}selected{% endif %}>
-                            March
-                        </option>
-
-                        <option value="4" {% if current_month == 4 %}selected{% endif %}>
-                            April
-                        </option>
-
-                        <option value="5" {% if current_month == 5 %}selected{% endif %}>
-                            May
-                        </option>
-
-                        <option value="6" {% if current_month == 6 %}selected{% endif %}>
-                            June
-                        </option>
-
-                        <option value="7" {% if current_month == 7 %}selected{% endif %}>
-                            July
-                        </option>
-
-                        <option value="8" {% if current_month == 8 %}selected{% endif %}>
-                            August
-                        </option>
-
-                        <option value="9" {% if current_month == 9 %}selected{% endif %}>
-                            September
-                        </option>
-
-                        <option value="10" {% if current_month == 10 %}selected{% endif %}>
-                            October
-                        </option>
-
-                        <option value="11" {% if current_month == 11 %}selected{% endif %}>
-                            November
-                        </option>
-
-                        <option value="12" {% if current_month == 12 %}selected{% endif %}>
-                            December
-                        </option>
-
+                        <option value="1" {% if current_month == 1 %}selected{% endif %}>January</option>
+                        <option value="2" {% if current_month == 2 %}selected{% endif %}>February</option>
+                        <option value="3" {% if current_month == 3 %}selected{% endif %}>March</option>
+                        <option value="4" {% if current_month == 4 %}selected{% endif %}>April</option>
+                        <option value="5" {% if current_month == 5 %}selected{% endif %}>May</option>
+                        <option value="6" {% if current_month == 6 %}selected{% endif %}>June</option>
+                        <option value="7" {% if current_month == 7 %}selected{% endif %}>July</option>
+                        <option value="8" {% if current_month == 8 %}selected{% endif %}>August</option>
+                        <option value="9" {% if current_month == 9 %}selected{% endif %}>September</option>
+                        <option value="10" {% if current_month == 10 %}selected{% endif %}>October</option>
+                        <option value="11" {% if current_month == 11 %}selected{% endif %}>November</option>
+                        <option value="12" {% if current_month == 12 %}selected{% endif %}>December</option>
                     </select>
                 </div>
-
 
                 <div class="calendar-filter-group">
                     <label for="year">Year</label>
@@ -107,8 +63,8 @@ Booking Calendar | Mehndi By Dhami
                     >
                 </div>
 
-
                 <button type="submit" class="btn calendar-filter-btn">
+                    <i class="fa-solid fa-calendar-days"></i>
                     Show Calendar
                 </button>
 
@@ -116,8 +72,6 @@ Booking Calendar | Mehndi By Dhami
 
         </div>
 
-
-        <!-- ================= STATUS LEGEND ================= -->
 
         <div class="calendar-legend">
 
@@ -144,15 +98,21 @@ Booking Calendar | Mehndi By Dhami
         </div>
 
 
-        <!-- ================= CALENDAR ================= -->
-
         <div class="calendar-box">
 
             <div class="calendar-title">
 
-                <h2>
-                    {{ current_month }}/{{ current_year }}
-                </h2>
+                <div>
+                    <p class="small-title">SELECTED MONTH</p>
+
+                    <h2>
+                        {{ current_month }}/{{ current_year }}
+                    </h2>
+                </div>
+
+                <span class="calendar-total-bookings">
+                    {{ bookings|length }} Bookings
+                </span>
 
             </div>
 
@@ -187,7 +147,6 @@ Booking Calendar | Mehndi By Dhami
                                 <div class="calendar-day-number">
                                     {{ day }}
                                 </div>
-
 
                                 <div class="calendar-day-bookings">
 
@@ -233,14 +192,12 @@ Booking Calendar | Mehndi By Dhami
         </div>
 
 
-        <!-- ================= MONTH BOOKINGS TABLE ================= -->
-
         <div class="calendar-bookings-table-box">
 
             <div class="dashboard-section-header">
 
                 <div>
-                    <p class="small-title">Selected Month</p>
+                    <p class="small-title">SELECTED MONTH</p>
                     <h2>All Bookings</h2>
                 </div>
 
@@ -256,7 +213,6 @@ Booking Calendar | Mehndi By Dhami
                 <table class="dashboard-table">
 
                     <thead>
-
                         <tr>
                             <th>Booking ID</th>
                             <th>Customer</th>
@@ -266,9 +222,7 @@ Booking Calendar | Mehndi By Dhami
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
-
                     </thead>
-
 
                     <tbody>
 
@@ -277,44 +231,32 @@ Booking Calendar | Mehndi By Dhami
                             <tr>
 
                                 <td>
-                                    <strong>
-                                        {{ booking.booking_id }}
-                                    </strong>
+                                    <strong>{{ booking.booking_id }}</strong>
                                 </td>
 
-                                <td>
-                                    {{ booking.name }}
-                                </td>
+                                <td>{{ booking.name }}</td>
 
-                                <td>
-                                    {{ booking.phone }}
-                                </td>
+                                <td>{{ booking.phone }}</td>
 
-                                <td>
-                                    {{ booking.service }}
-                                </td>
+                                <td>{{ booking.service }}</td>
 
                                 <td>
                                     {{ booking.booking_date|date:"d M Y" }}
                                 </td>
 
                                 <td>
-
                                     <span class="status-badge status-{{ booking.status|lower }}">
                                         {{ booking.status }}
                                     </span>
-
                                 </td>
 
                                 <td>
-
                                     <a
                                         href="{% url 'booking_receipt' booking.booking_id %}"
                                         class="table-action-btn"
                                     >
                                         View
                                     </a>
-
                                 </td>
 
                             </tr>
@@ -322,11 +264,9 @@ Booking Calendar | Mehndi By Dhami
                         {% empty %}
 
                             <tr>
-
                                 <td colspan="7" class="empty-table-message">
                                     No bookings found for this month.
                                 </td>
-
                             </tr>
 
                         {% endfor %}

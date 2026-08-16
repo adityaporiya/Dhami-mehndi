@@ -16,7 +16,7 @@ DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 ALLOWED_HOSTS = [
     "127.0.0.1",
     "localhost",
-    "dhami-mehndi.onrender.com",
+    "Dhruvi -mehndi.onrender.com",
 ]
 
 render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME")
@@ -25,7 +25,7 @@ if render_hostname:
     ALLOWED_HOSTS.append(render_hostname)
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://dhami-mehndi.onrender.com",
+    "https://Dhruvi -mehndi.onrender.com",
 ]
 INSTALLED_APPS = [
     "django.contrib.admin",

@@ -228,7 +228,7 @@ def home(request):
                 result = send_mail(
                     subject=(
                         "Booking Confirmation - "
-                        "Mehndi By Dhami"
+                        "Mehndi By Dhruvi "
                     ),
                     message=f"""
 Hello {booking_object.name},
@@ -244,7 +244,7 @@ Status: {booking_object.status}
 Please save your Booking ID for tracking your booking.
 
 Thank you,
-Mehndi By Dhami
+Mehndi By Dhruvi 
 """,
                     from_email=settings.DEFAULT_FROM_EMAIL,
                     recipient_list=[
@@ -553,7 +553,7 @@ def booking(request):
                 try:
 
                     result = send_mail(
-                        subject="Booking Confirmation - Mehndi By Dhami",
+                        subject="Booking Confirmation - Mehndi By Dhruvi ",
                         message=f"""
 Hello {booking_object.name},
 
@@ -569,7 +569,7 @@ Phone : {booking_object.phone}
 
 Status : {booking_object.status}
 
-Thank You for choosing Mehndi By Dhami.
+Thank You for choosing Mehndi By Dhruvi .
 """,
                         from_email=settings.DEFAULT_FROM_EMAIL,
                         recipient_list=[

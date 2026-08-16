@@ -13,7 +13,7 @@
 
     <title>
         {% block title %}
-            Mehndi By Dhami
+            Mehndi By Dhruvi
         {% endblock %}
     </title>
 
@@ -27,7 +27,7 @@
         content="Mehndi, Bridal Mehndi, Arabic Mehndi, Mehndi Artist, Surat Mehndi"
     >
 
-    <meta name="author" content="Mehndi By Dhami">
+    <meta name="author" content="Mehndi By Dhruvi ">
     <meta name="theme-color" content="#b76e79">
 
     <link
@@ -42,8 +42,9 @@
 
     <link
         rel="stylesheet"
-        href="{% static 'website/css/hcss.css' %}?v=50"
-    >
+href="{% static 'website/css/hcss.css' %}?v=100"    >
+    {% block extra_css %}
+    {% endblock %}
 </head>
 
 <body>
@@ -56,14 +57,14 @@
 
             <nav class="navbar">
 
-                <a href="{% url 'home' %}" class="logo" aria-label="Mehndi By Dhami Home">
+                <a href="{% url 'home' %}" class="logo" aria-label="Mehndi By Dhruvi  Home">
                     <span class="logo-mark">
                         <i class="fa-solid fa-leaf"></i>
                     </span>
 
                     <span class="logo-text">
                         <strong>Mehndi</strong>
-                        <small>By Dhami</small>
+                        <small>By Dhruvi </small>
                     </span>
                 </a>
 
@@ -134,7 +135,7 @@
                     </span>
 
                     <span>
-                        <strong>Mehndi By Dhami</strong>
+                        <strong>Mehndi By Dhruvi </strong>
                         <small>Elegant art for every celebration</small>
                     </span>
                 </a>
@@ -265,7 +266,7 @@
                         </span>
 
                         <div>
-                            <h2>Mehndi By Dhami</h2>
+                            <h2>Mehndi By Dhruvi </h2>
                             <span>Elegant • Natural • Memorable</span>
                         </div>
                     </div>
@@ -301,7 +302,7 @@
 
                     <p>
                         <i class="fa-solid fa-envelope"></i>
-                        info@mehndibydhami.com
+                        info@mehndibyDhruvi .com
                     </p>
 
                     <p>
@@ -338,7 +339,7 @@
             <hr>
 
             <p class="copyright">
-                © 2026 Mehndi By Dhami | All Rights Reserved.
+                © 2026 Mehndi By Dhruvi  | All Rights Reserved.
             </p>
 
         </footer>

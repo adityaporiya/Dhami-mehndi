@@ -1,7 +1,10 @@
-{% extends "website/base.html" %}
+{% load static %}
 
-{% block title %}
-Admin Dashboard | Mehndi By Dhami
+{% block extra_css %}
+<link
+    rel="stylesheet"
+    href="{% static 'website/css/dashboard.css' %}?v=1"
+>
 {% endblock %}
 
 {% block content %}
@@ -43,13 +46,17 @@ Admin Dashboard | Mehndi By Dhami
                 </div>
 
                 <div class="notification-bell">
+
                     <i class="fa-solid fa-bell"></i>
 
                     {% if pending_bookings or pending_reviews %}
+
                         <span class="notification-count">
                             {{ pending_bookings|add:pending_reviews }}
                         </span>
+
                     {% endif %}
+
                 </div>
 
             </div>
@@ -57,7 +64,7 @@ Admin Dashboard | Mehndi By Dhami
 
             <div class="notification-list">
 
-                <!-- Newest Booking -->
+                <!-- ================= NEWEST BOOKING ================= -->
 
                 {% if latest_booking %}
 
@@ -97,7 +104,7 @@ Admin Dashboard | Mehndi By Dhami
                 {% endif %}
 
 
-                <!-- Pending Bookings -->
+                <!-- ================= PENDING BOOKINGS ================= -->
 
                 {% if pending_bookings > 0 %}
 
@@ -131,7 +138,7 @@ Admin Dashboard | Mehndi By Dhami
                 {% endif %}
 
 
-                <!-- Pending Reviews -->
+                <!-- ================= PENDING REVIEWS ================= -->
 
                 {% if pending_reviews > 0 %}
 
@@ -165,7 +172,7 @@ Admin Dashboard | Mehndi By Dhami
                 {% endif %}
 
 
-                <!-- Today's Bookings -->
+                <!-- ================= TODAY'S BOOKINGS ================= -->
 
                 {% if today_bookings_count > 0 %}
 
@@ -180,7 +187,8 @@ Admin Dashboard | Mehndi By Dhami
                             <h3>Today's Bookings</h3>
 
                             <p>
-                                You have {{ today_bookings_count }}
+                                You have
+                                {{ today_bookings_count }}
                                 booking{{ today_bookings_count|pluralize }}
                                 scheduled for today.
                             </p>
@@ -199,7 +207,7 @@ Admin Dashboard | Mehndi By Dhami
                 {% endif %}
 
 
-                <!-- Cancelled Bookings -->
+                <!-- ================= CANCELLED BOOKINGS ================= -->
 
                 {% if cancelled_bookings > 0 %}
 
@@ -233,7 +241,7 @@ Admin Dashboard | Mehndi By Dhami
                 {% endif %}
 
 
-                <!-- No Notifications -->
+                <!-- ================= NO NOTIFICATIONS ================= -->
 
                 {% if not latest_booking and pending_bookings == 0 and pending_reviews == 0 and today_bookings_count == 0 and cancelled_bookings == 0 %}
 
@@ -260,6 +268,8 @@ Admin Dashboard | Mehndi By Dhami
 
         <div class="dashboard-stats">
 
+            <!-- Total Bookings -->
+
             <div class="stat-card">
 
                 <div class="stat-icon">
@@ -273,6 +283,8 @@ Admin Dashboard | Mehndi By Dhami
 
             </div>
 
+
+            <!-- Pending -->
 
             <div class="stat-card pending-card">
 
@@ -288,6 +300,8 @@ Admin Dashboard | Mehndi By Dhami
             </div>
 
 
+            <!-- Confirmed -->
+
             <div class="stat-card confirmed-card">
 
                 <div class="stat-icon">
@@ -301,6 +315,8 @@ Admin Dashboard | Mehndi By Dhami
 
             </div>
 
+
+            <!-- Completed -->
 
             <div class="stat-card completed-card">
 
@@ -316,6 +332,8 @@ Admin Dashboard | Mehndi By Dhami
             </div>
 
 
+            <!-- Cancelled -->
+
             <div class="stat-card cancelled-card">
 
                 <div class="stat-icon">
@@ -329,6 +347,8 @@ Admin Dashboard | Mehndi By Dhami
 
             </div>
 
+
+            <!-- Total Reviews -->
 
             <div class="stat-card review-stat-card">
 
@@ -350,6 +370,8 @@ Admin Dashboard | Mehndi By Dhami
 
         <div class="dashboard-actions">
 
+            <!-- Booking Calendar -->
+
             <a
                 href="{% url 'booking_calendar' %}"
                 class="dashboard-action-card"
@@ -357,10 +379,14 @@ Admin Dashboard | Mehndi By Dhami
 
                 <i class="fa-solid fa-calendar-days"></i>
 
-                <span>Booking Calendar</span>
+                <span>
+                    Booking Calendar
+                </span>
 
             </a>
 
+
+            <!-- Search Booking -->
 
             <a
                 href="{% url 'track_booking' %}"
@@ -369,10 +395,14 @@ Admin Dashboard | Mehndi By Dhami
 
                 <i class="fa-solid fa-magnifying-glass"></i>
 
-                <span>Search Booking</span>
+                <span>
+                    Search Booking
+                </span>
 
             </a>
 
+
+            <!-- Manage Bookings -->
 
             <a
                 href="/admin/website/booking/"
@@ -381,10 +411,14 @@ Admin Dashboard | Mehndi By Dhami
 
                 <i class="fa-solid fa-list"></i>
 
-                <span>Manage Bookings</span>
+                <span>
+                    Manage Bookings
+                </span>
 
             </a>
 
+
+            <!-- Manage Reviews -->
 
             <a
                 href="/admin/website/review/"
@@ -393,7 +427,9 @@ Admin Dashboard | Mehndi By Dhami
 
                 <i class="fa-solid fa-star"></i>
 
-                <span>Manage Reviews</span>
+                <span>
+                    Manage Reviews
+                </span>
 
             </a>
 
@@ -409,8 +445,15 @@ Admin Dashboard | Mehndi By Dhami
                 <div class="dashboard-section-header">
 
                     <div>
-                        <p class="small-title">Today's Schedule</p>
-                        <h2>Today's Bookings</h2>
+
+                        <p class="small-title">
+                            Today's Schedule
+                        </p>
+
+                        <h2>
+                            Today's Bookings
+                        </h2>
+
                     </div>
 
                     <span class="calendar-total-bookings">
@@ -427,15 +470,18 @@ Admin Dashboard | Mehndi By Dhami
                         <thead>
 
                             <tr>
+
                                 <th>Booking ID</th>
                                 <th>Customer</th>
                                 <th>Phone</th>
                                 <th>Service</th>
                                 <th>Status</th>
                                 <th>Action</th>
+
                             </tr>
 
                         </thead>
+
 
                         <tbody>
 
@@ -444,18 +490,28 @@ Admin Dashboard | Mehndi By Dhami
                                 <tr>
 
                                     <td>
-                                        <strong>{{ booking.booking_id }}</strong>
+                                        <strong>
+                                            {{ booking.booking_id }}
+                                        </strong>
                                     </td>
 
-                                    <td>{{ booking.name }}</td>
+                                    <td>
+                                        {{ booking.name }}
+                                    </td>
 
-                                    <td>{{ booking.phone }}</td>
+                                    <td>
+                                        {{ booking.phone }}
+                                    </td>
 
-                                    <td>{{ booking.service }}</td>
+                                    <td>
+                                        {{ booking.service }}
+                                    </td>
 
                                     <td>
 
-                                        <span class="status-badge status-{{ booking.status|lower }}">
+                                        <span
+                                            class="status-badge status-{{ booking.status|lower }}"
+                                        >
                                             {{ booking.status }}
                                         </span>
 
@@ -494,11 +550,21 @@ Admin Dashboard | Mehndi By Dhami
             <div class="dashboard-section-header">
 
                 <div>
-                    <p class="small-title">Latest Activity</p>
-                    <h2>Recent Bookings</h2>
+
+                    <p class="small-title">
+                        Latest Activity
+                    </p>
+
+                    <h2>
+                        Recent Bookings
+                    </h2>
+
                 </div>
 
-                <a href="/admin/website/booking/" class="btn2">
+                <a
+                    href="/admin/website/booking/"
+                    class="btn2"
+                >
                     View All
                 </a>
 
@@ -512,6 +578,7 @@ Admin Dashboard | Mehndi By Dhami
                     <thead>
 
                         <tr>
+
                             <th>Booking ID</th>
                             <th>Customer</th>
                             <th>Phone</th>
@@ -519,9 +586,11 @@ Admin Dashboard | Mehndi By Dhami
                             <th>Booking Date</th>
                             <th>Status</th>
                             <th>Action</th>
+
                         </tr>
 
                     </thead>
+
 
                     <tbody>
 
@@ -530,14 +599,22 @@ Admin Dashboard | Mehndi By Dhami
                             <tr>
 
                                 <td>
-                                    <strong>{{ booking.booking_id }}</strong>
+                                    <strong>
+                                        {{ booking.booking_id }}
+                                    </strong>
                                 </td>
 
-                                <td>{{ booking.name }}</td>
+                                <td>
+                                    {{ booking.name }}
+                                </td>
 
-                                <td>{{ booking.phone }}</td>
+                                <td>
+                                    {{ booking.phone }}
+                                </td>
 
-                                <td>{{ booking.service }}</td>
+                                <td>
+                                    {{ booking.service }}
+                                </td>
 
                                 <td>
                                     {{ booking.booking_date|date:"d M Y" }}
@@ -545,7 +622,9 @@ Admin Dashboard | Mehndi By Dhami
 
                                 <td>
 
-                                    <span class="status-badge status-{{ booking.status|lower }}">
+                                    <span
+                                        class="status-badge status-{{ booking.status|lower }}"
+                                    >
                                         {{ booking.status }}
                                     </span>
 
@@ -568,7 +647,10 @@ Admin Dashboard | Mehndi By Dhami
 
                             <tr>
 
-                                <td colspan="7" class="empty-table-message">
+                                <td
+                                    colspan="7"
+                                    class="empty-table-message"
+                                >
                                     No bookings found.
                                 </td>
 

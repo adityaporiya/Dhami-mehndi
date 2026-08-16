@@ -1,5 +1,5 @@
 // =======================================
-// Mehndi By Dhami
+// Mehndi By Dhruvi
 // Complete Professional JavaScript
 // =======================================
 
@@ -1008,7 +1008,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // =======================================
 
     console.log(
-        "Mehndi By Dhami loaded successfully."
+        "Mehndi By Dhruvi  loaded successfully."
     );
 
 });
