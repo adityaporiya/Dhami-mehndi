@@ -57,9 +57,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 
+    "cloudinary",
+    "cloudinary_storage",
+
     "website",
 ]
-
 
 # =====================================================
 # MIDDLEWARE
@@ -171,10 +173,10 @@ STATICFILES_STORAGE = (
 # =====================================================
 # MEDIA / UPLOADED IMAGES
 # =====================================================
-
-MEDIA_URL = "/media/"
-
-MEDIA_ROOT = BASE_DIR / "media"
+#
+# MEDIA_URL = "/media/"
+#
+# MEDIA_ROOT = BASE_DIR / "media"
 
 
 # =====================================================
@@ -248,3 +250,15 @@ LOGGING = {
         },
     },
 }
+
+# =====================================================
+# CLOUDINARY MEDIA STORAGE
+# =====================================================
+
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
