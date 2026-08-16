@@ -34,6 +34,16 @@ render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME")
 if render_hostname and render_hostname not in ALLOWED_HOSTS:
     ALLOWED_HOSTS.append(render_hostname)
 
+    if not DEBUG:
+        SECURE_PROXY_SSL_HEADER = (
+            "HTTP_X_FORWARDED_PROTO",
+            "https",
+        )
+
+        SESSION_COOKIE_SECURE = True
+
+        CSRF_COOKIE_SECURE = True
+
 
 # =====================================================
 # CSRF
