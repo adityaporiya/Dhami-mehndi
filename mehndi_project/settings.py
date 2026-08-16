@@ -17,8 +17,7 @@ SECRET_KEY = os.getenv(
     "django-insecure-local-development-key",
 )
 
-DEBUG = os.getenv("DEBUG", "True").lower() == "true"
-
+DEBUG = os.getenv("DEBUG", "False").lower() == "true"
 
 # =====================================================
 # ALLOWED HOSTS
@@ -39,10 +38,17 @@ if render_hostname and render_hostname not in ALLOWED_HOSTS:
 # =====================================================
 # CSRF
 # =====================================================
-
 CSRF_TRUSTED_ORIGINS = [
     "https://dhruvi-mehndi.onrender.com",
 ]
+
+render_hostname = os.getenv("RENDER_EXTERNAL_HOSTNAME")
+
+if render_hostname:
+    render_origin = f"https://{render_hostname}"
+
+    if render_origin not in CSRF_TRUSTED_ORIGINS:
+        CSRF_TRUSTED_ORIGINS.append(render_origin)
 
 
 # =====================================================
@@ -250,15 +256,3 @@ LOGGING = {
         },
     },
 }
-
-# =====================================================
-# CLOUDINARY MEDIA STORAGE
-# =====================================================
-
-CLOUDINARY_STORAGE = {
-    "CLOUD_NAME": os.getenv("CLOUDINARY_CLOUD_NAME"),
-    "API_KEY": os.getenv("CLOUDINARY_API_KEY"),
-    "API_SECRET": os.getenv("CLOUDINARY_API_SECRET"),
-}
-
-DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
